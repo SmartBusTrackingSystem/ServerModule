@@ -7,7 +7,9 @@ router.get('/', function(req, res, next) {
     busLog.find(function(err, bLog) {
         if (err)
             res.send(err);
-
+        console.log("request is ::", req);
+        console.log("blog is :: "+bLog);
+        
         res.json(bLog);
     });
 });

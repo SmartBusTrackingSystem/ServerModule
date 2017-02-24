@@ -12,7 +12,6 @@ mongoose.connect('mongodb://localhost/SBTS')
 
 var router = require('./router');
 
-
 var app = express();
 
 // view engine setup
