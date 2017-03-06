@@ -7,12 +7,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var BusLogSchema = new Schema({
-    bus_id: Schema.Types.ObjectId,
-    bus_route : Number,
+    bus_id: Number,
+    route_id : Number,
     latitude: String,
     longitude : String,
+    speed: String,
     updated : { type: Date, default: Date.now },
-    vacant_seats: Number
+    occupied_seats: Number
 }, { collection: 'bus_log' });
 
 module.exports = mongoose.model('BusLog', BusLogSchema);
