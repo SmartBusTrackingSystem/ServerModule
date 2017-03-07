@@ -1,5 +1,5 @@
 var express = require('express');
-var tokenUtil = require('../utils/tokenUtil');
+var tokenUtil = require('../controllers/tokenController');
 var googleApiController = require('../controllers/googleMapsController');
 var router = express.Router();
 

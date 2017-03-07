@@ -1,11 +1,11 @@
 var express = require('express');
 var busLog = require('../models/BusLog');
-var tokenUtil = require('../utils/tokenUtil');
+var tokenUtil = require('../controllers/tokenController');
 var router = express.Router();
 
 /* GET bus listing. */
 router.get('/', function (req, res, next) {
-    tokenUtil.autheticate(req.token, function(result){
+    tokenUtil.autheticate(req.query.token, function(result){
         if(result){
                 busLog.find(function (err, allBuses) {
                     if (!err)
@@ -21,7 +21,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-   tokenUtil.autheticate(req.token, function(result){
+   tokenUtil.autheticate(req.body.token, function(result){
        if(result){
            var busL = new busLog();
            busL.bus_id = req.body.bus_id;
