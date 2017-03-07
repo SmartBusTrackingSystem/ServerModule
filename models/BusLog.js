@@ -12,6 +12,7 @@ var BusLogSchema = new Schema({
     latitude: String,
     longitude : String,
     speed: String,
+    direction: Boolean,
     updated : { type: Date, default: Date.now },
     occupied_seats: Number
 }, { collection: 'bus_log' });
