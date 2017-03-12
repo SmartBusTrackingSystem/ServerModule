@@ -9,10 +9,14 @@ var Schema = mongoose.Schema;
 var BusLogSchema = new Schema({
     bus_id: Number,
     route_id : Number,
+    loc : {
+        type: { type: String }
+        , coordinates: []
+    },
     latitude: String,
     longitude : String,
     speed: String,
-    direction: Boolean,
+    direction: Number,
     updated : { type: Date, default: Date.now },
     occupied_seats: Number
 }, { collection: 'bus_log' });

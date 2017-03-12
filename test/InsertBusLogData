@@ -1,0 +1,98 @@
+/**
+ * Created by neo on 3/6/17.
+ */
+
+
+var busLog = require('../models/BusLog');
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise
+
+mongoose.connect('mongodb://localhost/SBTS')
+
+function insertRoutes() {
+    var data = [
+        {
+            "occupied_seats" : 30,
+            "direction" : 0,
+            "speed" : 30,
+            "route_id" : 22,
+            "bus_id" : 2,
+            "loc" : {
+                "type" : "Point",
+                "coordinates" : [
+                    -121.97512435886892,
+                    37.35226125918111
+                ]
+            },
+        },
+        {
+            "occupied_seats" : 20,
+            "direction" : 0,
+            "speed" : 30,
+            "route_id" : 22,
+            "bus_id" : 3,
+            "loc" : {
+                "type" : "Point",
+                "coordinates" : [
+                    -121.9587242603302,
+                    37.352223733512474
+                ]
+            },
+        },
+
+        {
+            "occupied_seats" : 10,
+            "direction" : 0,
+            "speed" : 30,
+            "route_id" : 22,
+            "bus_id" : 4,
+            "loc" : {
+                "type" : "Point",
+                "coordinates" : [
+                    -121.95308732960257,
+                     37.35239771618909
+                ]
+            },
+        },
+
+        {
+            "occupied_seats" : 10,
+            "direction" : 0,
+            "speed" : 30,
+            "route_id" : 22,
+            "bus_id" : 2,
+            "loc" : {
+                "type" : "Point",
+                "coordinates" : [
+                    -121.9474096297563,
+                    37.35434390737206
+                ]
+            },
+        },
+
+
+    ]
+    data.forEach(function(obj){
+       
+        var busL = new busLog();
+        busL.bus_id = obj.bus_id;
+        busL.route_id = obj.route_id;
+        busL.loc =
+            { type: 'Point', coordinates: [obj.loc.coordinates[0], obj.loc.coordinates[1]] };
+        busL.speed = obj.speed;
+        busL.direction = obj.direction;
+        busL.occupied_seats = obj.occupied_seats;
+        // save the bear and check for errors
+        busL.save(function (err) {
+            console.log(err);
+            if (err)
+                console.log("Insertion failed"+busL.bus_id)
+        });
+    });
+}
+
+insertRoutes();
+
+setTimeout(function () {
+    process.exit()
+},20000);

@@ -11,14 +11,11 @@ module.exports = {
     autheticate: function (tokenString, callback) {
         async.waterfall([
             function (cb) {
-                console.log(typeof tokenString);
-                console.log(tokenString);
                 var query = tokenCollection.findOne({'token': tokenString});
                 query.select('token');
                 query.exec(function (err, doc) {
                     if (err) cb("null", false);
                     else {
-                        console.log(doc);
                         if (doc)
                             cb("null", true);
                         else

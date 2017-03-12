@@ -26,9 +26,10 @@ router.post('/', function (req, res, next) {
            var busL = new busLog();
            busL.bus_id = req.body.bus_id;
            busL.route_id = req.body.route_id;
-           busL.latitude = req.body.latitude;
-           busL.longitude = req.body.longitude;
+           busL.loc =
+           { type: 'Point', coordinates: [req.body.longitude, req.body.latitude] };
            busL.speed = req.body.speed;
+           busL.direction = req.body.direction;
            busL.occupied_seats = req.body.occupied_seats;
 
            // save the bear and check for errors
