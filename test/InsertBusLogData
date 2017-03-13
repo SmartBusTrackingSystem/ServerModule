@@ -70,6 +70,66 @@ function insertRoutes() {
             },
         },
 
+        {
+            "occupied_seats" : 10,
+            "direction" : 0,
+            "speed" : 35,
+            "route_id" : 522,
+            "bus_id" : 6,
+            "loc" : {
+                "type" : "Point",
+                "coordinates" : [
+                    -122.00478744663997,
+                    37.35202416490421
+                ]
+            },
+        },
+
+        {
+            "occupied_seats" : 12,
+            "direction" : 0,
+            "speed" : 35,
+            "route_id" : 522,
+            "bus_id" : 7,
+            "loc" : {
+                "type" : "Point",
+                "coordinates" : [
+                    -121.96204376246897,
+                    37.35233119379308
+                ]
+            },
+        },
+
+        {
+            "occupied_seats" : 15,
+            "direction" : 0,
+            "speed" : 35,
+            "route_id" : 522,
+            "bus_id" : 11,
+            "loc" : {
+                "type" : "Point",
+                "coordinates" : [
+                    -122.02401352085872,
+                    37.36116626435246
+                ]
+            },
+        },
+
+        {
+            "occupied_seats" : 23,
+            "direction" : 0,
+            "speed" : 35,
+            "route_id" : 522,
+            "bus_id" : 8,
+            "loc" : {
+                "type" : "Point",
+                "coordinates" : [
+                    -122.0416517247213,
+                    37.370273145706356
+                ]
+            },
+        },
+
 
     ]
     data.forEach(function(obj){

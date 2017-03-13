@@ -11,18 +11,26 @@ var stationBeaconCollection = require('../models/StationBeacon');
 var search = function (routeInfromation, callback) {
     async.waterfall([
         function (cb) {
-            var query = routeLogCollection.findOne({'route_id': routeInfromation.route_id});
+            var query = routeLogCollection.findOne({'route_id': parseInt(routeInfromation.route_id)});
             query.exec(function (err, doc) {
                 //console.log(err);
                 if (err) cb("Moogoose err", null)
-                else {
-                    if (doc == null) cb("No Route Information found", null);
-                    if (doc.end_point.toLowerCase() == routeInfromation.head_station.toLowerCase()) {
-                        var direction = 0;
-                        cb(null, direction);
-                    } else {
-                        var direction = 1;
-                        cb(null, direction);
+                else {3
+                    if (doc == null)
+                        cb("No Route Information found", null);
+                    else {
+                        // console.log(doc.end_point.toLowerCase());
+                        // console.log(routeInfromation.head_station.toLowerCase());
+                        // console.log(typeof doc.end_point.toLowerCase());
+                        // console.log(typeof routeInfromation.head_station.toLowerCase());
+                        // console.log(routeInfromation.head_station.toLowerCase().indexOf(doc.end_point.toLowerCase()) != -1)
+                        if (routeInfromation.head_station.toLowerCase().indexOf(doc.end_point.toLowerCase()) != -1) {
+                            var direction = 0;
+                            cb(null, direction);
+                        } else {
+                            var direction = 1;
+                            cb(null, direction);
+                        }
                     }
                 }
 
@@ -101,17 +109,20 @@ var getBeaconInfo = function (routeInfromation, callback) {
             query.exec(function (err, doc) {
                 if (err) cb("null", null);
                 else {
-                        var obj = {};
+                    var obj = {};
+                    if (doc != null) {
                         if (doc.head_station.toLowerCase() == routeInfromation.head_station.toLowerCase()) {
                             obj = {
-                                "reminder_beacon_id": doc.previous_station_beacon_id
+                                "reminder_beacon_id": doc.previous_station_beacon_id,
+                                 "route_id":routeInfromation.route_id
                             }
                         } else {
                             obj = {
-                                "reminder_beacon_id": doc.next_station_beacon_id
+                                "reminder_beacon_id": doc.next_station_beacon_id,
+                                "route_id":routeInfromation.route_id
                             }
                         }
-
+                    }
                     cb(null, obj);
                 }
 

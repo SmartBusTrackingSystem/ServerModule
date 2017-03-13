@@ -16,41 +16,51 @@ var googleResult = function (source, destination, callback) {
             googleMapsClient.directions({
                 destination: destination,
                 origin: source,
-                mode: "transit",
-                transit_mode: "bus"
+                mode: 'transit',
+                alternatives: true,
+                transit_mode: ['bus']
             }, function (err, response) {
                 //console.log(util.inspect(response.json, {showHidden: false, depth: null}))
-                var result = {};
+                var busList = [];
+                var uniquesRoutes = [];
                 if ("routes" in response.json) {
                     var routes = response.json.routes;
                     if (Array.isArray(routes) && routes.length > 0) {
-                        if ("legs" in routes[0]) {
-                            var legs = routes[0].legs;
-                            if (Array.isArray(legs) && legs.length > 0) {
-                                var legObject = legs[0];
-                                if ("steps" in legObject) {
-                                    result["steps"] = legObject.steps;
-                                    var steps = legObject.steps;
-                                    if (Array.isArray(steps) && steps.length > 0) {
-                                        for (var i = 0; i < steps.length; i++) {
-                                            if (steps[i].travel_mode == 'TRANSIT') {
-                                                result['source'] = steps[i].transit_details.departure_stop;
-                                                result['destination'] = steps[i].transit_details.arrival_stop;
-                                                result['route_id'] = steps[i].transit_details.line.short_name;
-                                                var headsign = steps[i].transit_details.headsign;
-                                                result['head_station'] = headsign.substr(headsign.indexOf(' ')+1);
-                                                break;
+                        for(var j=0; j < routes.length; j++ ) {
+                            var result = {};
+                            if ("legs" in routes[j]) {
+                                var legs = routes[0].legs;
+                                if (Array.isArray(legs) && legs.length > 0) {
+                                    var legObject = legs[0];
+                                    if ("steps" in legObject) {
+                                        result["steps"] = legObject.steps;
+                                        var steps = legObject.steps;
+                                        if (Array.isArray(steps) && steps.length > 0) {
+                                            for (var i = 0; i < steps.length; i++) {
+                                                if (steps[i].travel_mode == 'TRANSIT') {
+                                                    result['source'] = steps[i].transit_details.departure_stop;
+                                                    result['destination'] = steps[i].transit_details.arrival_stop;
+                                                    result['route_id'] = steps[i].transit_details.line.short_name;
+                                                    var headsign = steps[i].transit_details.headsign;
+                                                    result['head_station'] = headsign.substr(headsign.indexOf(' ') + 1);
+                                                    break;
+                                                }
                                             }
                                         }
                                     }
+
                                 }
 
                             }
-
+                           // console.log(result['route_id']);
+                            if(uniquesRoutes.indexOf(result['route_id']) == -1){
+                                busList.push(result);
+                                uniquesRoutes.push(result['route_id']);
+                            }
                         }
                     }
                 }
-                cb("null", result)
+                cb("null", busList)
             })
         }], function (err, result) {
         callback(result)

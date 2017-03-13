@@ -83,7 +83,14 @@ function insertRoutes() {
             "start_point":"San Jose Diridon",
             "end_point":"Fremont Bart",
             "total_seats":40
-        }
+        },
+        {
+            "bus_id":11,
+            "route_id":522,
+            "start_point":"PALO ALTO",
+            "end_point":"EASTRIDGE",
+            "total_seats":50
+        },
     ]
     data.forEach(function(obj){
         var route = new routeLog();
