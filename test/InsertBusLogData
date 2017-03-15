@@ -20,8 +20,8 @@ function insertRoutes() {
             "loc" : {
                 "type" : "Point",
                 "coordinates" : [
-                    -121.97512435886892,
-                    37.35226125918111
+                    -121.971399,
+                    37.352348,
                 ]
             },
         },
@@ -34,8 +34,8 @@ function insertRoutes() {
             "loc" : {
                 "type" : "Point",
                 "coordinates" : [
-                    -121.9587242603302,
-                    37.352223733512474
+                     -122.008993,
+                      37.352212,
                 ]
             },
         },
@@ -49,8 +49,23 @@ function insertRoutes() {
             "loc" : {
                 "type" : "Point",
                 "coordinates" : [
-                    -121.95308732960257,
-                     37.35239771618909
+                    -122.018563,
+                    37.356544
+                ]
+            },
+        },
+
+        {
+            "occupied_seats" : 19,
+            "direction" : 0,
+            "speed" : 30,
+            "route_id" : 22,
+            "bus_id" : 5,
+            "loc" : {
+                "type" : "Point",
+                "coordinates" : [
+                   -122.040965,
+                    37.370154
                 ]
             },
         },
@@ -64,8 +79,8 @@ function insertRoutes() {
             "loc" : {
                 "type" : "Point",
                 "coordinates" : [
-                    -121.9474096297563,
-                    37.35434390737206
+                     -121.961443,
+                    37.352348
                 ]
             },
         },

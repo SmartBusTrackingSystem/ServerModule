@@ -15,7 +15,7 @@ var search = function (routeInfromation, callback) {
             query.exec(function (err, doc) {
                 //console.log(err);
                 if (err) cb("Moogoose err", null)
-                else {3
+                else {
                     if (doc == null)
                         cb("No Route Information found", null);
                     else {

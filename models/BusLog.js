@@ -20,5 +20,5 @@ var BusLogSchema = new Schema({
     updated : { type: Date, default: Date.now },
     occupied_seats: Number
 }, { collection: 'bus_log' });
-
+BusLogSchema.index({'loc': '2dsphere'});
 module.exports = mongoose.model('BusLog', BusLogSchema);
