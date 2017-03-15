@@ -2,26 +2,22 @@ doctype html
 html
   head
    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js')
-   script(src='/js/loginangular.js')
+   script(src='/js/login.angular.js')
    link(href='https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css')
    link(href='https://fonts.googleapis.com/css?family=Ubuntu:300italic,400,400italic,700,700italic' rel='stylesheet' type='text/css') 
    link(rel='stylesheet', href='/stylesheets/login.css')
    title SBT Dashboard
   body
     h1 Welcome to SBT Dashboard
-    div#container(ng-app='login', ng-init='use=kkblowing;pas=kk', ng-controller='logincontroller')
-      | This is just to test if angular is workign, you can see your name here if you type in username :  {{use}},
-      | where as this hello text after colon : {{test}} , is from controller loginangular.js
-      | input#username(type='text', ng-model='use', ng-bind='hint')
-
-      form(method='post')
-        label(for='username') Username:
-        input#username(type='text', ng-model='user', ng-bind='hinting')
+    div#container(ng-app='login', ng-controller='logincontroller')
+      form(action='http://showmeeapp.com/stations.html')
+        label(for='username') Username: 
+        input#username(type='text', ng-model='user', ng-bind='user')
         label(for='password') Password:
-        input#password(type='password', ng-model='pas')
+        input#password(type='password', ng-model='pass')
         div#lower
           input(type='checkbox')
           label(for='checkbox') Keep me logged in
-          input(type='submit', value='login', ng-model='submit')
+          input(type='submit', value='login',ng-href="#/dashboard")
 
 

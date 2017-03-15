@@ -24,7 +24,6 @@ module.exports = {
                         else
                             cb("null", false);
                     }
-
                 });
             }
         ], function (err, result) {

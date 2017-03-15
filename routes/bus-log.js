@@ -4,7 +4,7 @@ var tokenUtil = require('../controllers/tokenController');
 var router = express.Router();
 
 /* GET bus listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(require, res, next) {
     busLog.find(function(err, bLog) {
         if (err)
             res.send(err);
@@ -12,6 +12,8 @@ router.get('/', function(req, res, next) {
         console.log("blog is :: "+bLog);
         
         res.json(bLog);
+      });
+  });
 router.get('/', function (req, res, next) {
     tokenUtil.autheticate(req.query.token, function(result){
         if(result){
