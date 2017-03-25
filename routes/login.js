@@ -24,16 +24,8 @@ endpont : https://localhost:3000/api/login/authentication.
 */
 
 router.get('/authentication', function(req, res, err){
-		res.render('index');
-	// console.log("authentication GET request :: ", req.params("username"));
-
-	// User.find({}, function(err, users) {
-  // if (err) throw err;
-
-  // object of all the users
-  // console.log(users);
-// });
-	// res.render('index');
+	console.log("Inside authentication api ");
+	res.render('index');
 });
 
 

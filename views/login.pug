@@ -10,7 +10,7 @@ html
   body
     h1 Welcome to SBT Dashboard
     div#container(ng-app='login', ng-controller='logincontroller')
-      form(action='http://showmeeapp.com/stations.html')
+      form()
         label(for='username') Username: 
         input#username(type='text', ng-model='user', ng-bind='user')
         label(for='password') Password:
@@ -18,6 +18,6 @@ html
         div#lower
           input(type='checkbox')
           label(for='checkbox') Keep me logged in
-          input(type='submit', value='login',ng-href="#/dashboard")
+          input(ng-click="submit();", value='login',type='submit')
 
 
