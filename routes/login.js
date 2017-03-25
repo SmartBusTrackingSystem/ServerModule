@@ -37,7 +37,6 @@ if(users==null||users.length==0)
 	var json_res={"status":"Invalid"};
 	res.send(json_res);
 }
-
 else
 {
 	console.log("Valid");
@@ -58,7 +57,8 @@ else
 
 router.get('/userProfile',function(req, res, err){
 	console.log("you are at /userProfule");
-	res.render('index',{title: 'Express'});
+	// redirect to dashboard.
+	res.render('dashboard',{title: 'Express'});
 });
 
 
