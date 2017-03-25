@@ -10,22 +10,30 @@ $scope.submit=function(){
   //           function (response) {console.log("whatttt I got it ",response);},
   //           function (failure) { console.log("failed :(", failure); });
 
-			console.log("Requesting api /api/login/authenticaiton");
 			console.log("Username : "+$scope.user );
 			console.log("password : "+$scope.pass )
 
   	$http({
-			method : "GET",
+			method : "POST",
 			url : '/api/login/authentication',
 			data : {
-				"adminId":$scope.user,
+				"user":$scope.user,
 				"password":$scope.pass
 			}
 		}).success(function(data){
-			console.log("wohhooo success");
+			console.log("wohhooo");
+
+			if(data.status=="Invalid")
+			{
+				alert("Invalid Username/password")
+			}
+			else
+			{
+				window.location.assign("/api/login/userProfile");
+			}
 
 			}).error(function(error) {
-			console.log("Baaahh error ");
+			console.log("Baaaeehhhh");
 
 		});
 	};

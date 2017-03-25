@@ -23,10 +23,46 @@ router.get('/login', function(req, res, err){
 endpont : https://localhost:3000/api/login/authentication.
 */
 
-router.get('/authentication', function(req, res, err){
+router.post('/authentication', function(req, res, err){
 	console.log("Inside authentication api ");
-	res.render('index');
+	console.log("Request paramter user"+req.body.user);
+	console.log("Request paramter password"+req.body.password);
+	User.find({username:req.body.user,password:req.body.password}, function(err, users) {
+ 	 if (err) throw err;
+
+
+if(users==null||users.length==0)
+{
+	console.log("Invalid");
+	var json_res={"status":"Invalid"};
+	res.send(json_res);
+}
+
+else
+{
+	console.log("Valid");
+	
+  	console.log(users);
+	var json_res={"status":"Valid"};
+	res.send(json_res);
+}
+  	// object of all the users
+	});
+// Calling via mongoose.js
+
+	// findUser(req.body.user,req.body.password);
+	//res.render('index');
+
+
 });
+
+router.get('/userProfile',function(req, res, err){
+	console.log("you are at /userProfule");
+	res.render('index',{title: 'Express'});
+});
+
+
+
 
 
 // router.post('/authentication', function(req, res, err){
