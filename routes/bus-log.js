@@ -27,7 +27,7 @@ router.post('/', function (req, res, next) {
            busL.bus_id = req.body.bus_id;
            busL.route_id = req.body.route_id;
            busL.loc =
-           { type: 'Point', coordinates: [req.body.longitude, req.body.latitude] };
+           { type: 'Point', coordinates: [parseFloat(req.body.longitude), parseFloat(req.body.latitude)] };
            busL.speed = req.body.speed;
            busL.direction = req.body.direction;
            busL.occupied_seats = req.body.occupied_seats;

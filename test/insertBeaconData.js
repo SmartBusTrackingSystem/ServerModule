@@ -21,7 +21,7 @@ function insertStationBeacons() {
         },
         {
             "station_id":39,
-            "station_name":"E Santa Clara & S Seventh",
+            "station_name":"Santa Clara & 7th",
             "route_id": 22,
             "previous_station_beacon_id":"B9407F30-F5F8-466E-AFF9-25556B57FE6D:10001:19641",
             "next_staion_beacon_id":"B9407F30-F5F8-466E-AFF9-25556B57FE6D:16317:2971",
